@@ -1,0 +1,54 @@
+/*Case study 3.1: an income tax calculator
+ * Compute a person's income tax
+ * 1. Significant constants:
+ *      tax rate
+ *      standard deduction
+ *      deduction per dependent
+ * 2. Inputs:
+ *      gross income
+ *      number of dependants
+ * 3. Computations:
+ *      net income = gross income - standard deduction - 
+ *                   a deduction for each dependant
+ *      income tax = is a fixed percentage of the net income
+ * 4. Outputs:
+ *      income tax
+ */
+
+import java.util.Scanner;
+
+public class Income_Tax_Calculator{
+    
+    public static void main(String [] args){
+        
+        //Constants
+        final double TAX_RATE = 0.20;
+        final double STANDARD_DEDUCTION = 10000.0;
+        final double DEPENDENT_DEDUCTION = 2000.0;
+        
+        Scanner reader = new Scanner(System.in);
+        
+        double grossIncome;         //the gross income(input)
+        int numDependents;          //the number of dependents (input)
+        double taxableIncome;       //the taxable income (calculated)
+        double incomeTax;           //the income tax (calc and output)
+        
+        
+        //Request the inputs
+        System.out.print("Enter the gross income: ");
+        grossIncome = reader.nextDouble();
+        System.out.print("Enter the number of dependents: ");
+        numDependents = reader.nextInt();
+        
+        //Compute the income tax
+        taxableIncome = grossIncome - STANDARD_DEDUCTION - DEPENDENT_DEDUCTION * numDependents;
+        incomeTax = taxableIncome * TAX_RATE;
+        
+        //display all of the outputs
+        System.out.println("The income tax is $" + incomeTax);
+        System.out.println("Gross Income: " + grossIncome);
+        System.out.println("# of Dependents: " + numDependents);
+        System.out.println("Taxable Income: " + taxableIncome);
+        
+    }
+}
